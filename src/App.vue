@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    aaadd
   </div>
 </template>
 
@@ -13,5 +14,5 @@
 </script>
 
 <style>
-
+  @import "./assets/css/base.css";
 </style>
