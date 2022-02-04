@@ -1,18 +1,15 @@
 <template>
   <div>
-    首页
+    分类
   </div>
 </template>
 
 <script>
-  export default {
-    name: "Home",
-    components:{
-    }
-  }
+export default {
+  name: "Category"
+}
 </script>
 
 <style scoped>
-
 
 </style>

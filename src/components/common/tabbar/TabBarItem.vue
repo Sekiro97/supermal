@@ -1,15 +1,15 @@
 <template>
   <div class="tabbar-item" @click="itemClick">
     <!-- 图片 -->
-    <div v-if="isActive" class="tabbar-item-img-activated">
+    <div v-if="isActive" class="tabbar-item-img tabbar-item-img-activated">
       <slot name="tabbar-item-img-activated"/>
     </div>
-    <div v-else class="tabbar-item-img-normal">
+    <div v-else class="tabbar-item-img tabbar-item-img-normal">
       <slot name="tabbar-item-img-normal"/>
     </div>
     <!-- 文字 -->
     <div :style="isActivatedColor" class="tabbar-item-text-activated">
-      <slot name="tabbar-item-text"/>
+      <span>{{title}}</span>
     </div>
   </div>
 </template>
@@ -25,16 +25,15 @@ export default {
     path: {
       type: String,
       required: true
-    }
-  },
-  data(){
-    return{
-
+    },
+    title: {
+      type: String,
+      required: true
     }
   },
   computed:{
     isActive(){
-      return true;
+      return this.path.indexOf(this.$route.path) != -1;
     },
     isActivatedColor(){
       return this.isActive ? {color:this.activatedColor}:{}
@@ -42,7 +41,7 @@ export default {
   },
   methods:{
     itemClick(){
-      console.log('testClick');
+      this.$router.push(this.path)
     }
   }
 }
@@ -54,5 +53,8 @@ export default {
   text-align: center;
   height: 49px;
   font-size: 14px;
+}
+.tabbar-item-img{
+  margin-top: 3px
 }
 </style>
