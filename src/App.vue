@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    aaadd
+    <home/>
   </div>
 </template>
 
 <script>
+  import Home from '@/views/home/Home'
   export default {
     name: 'app',
     components:{
-
+      Home
     }
   }
 </script>

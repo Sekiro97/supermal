@@ -6,7 +6,7 @@ module.export = {
             'common' : '@/common',
             'components' : '@/components',
             'network' : '@/network',
-            'views' : '@/views'
+            'views' : 'src/views'
         }
     }
 }
