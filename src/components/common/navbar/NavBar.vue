@@ -12,11 +12,16 @@ export default {
   props:{
     backgroundColor:{
       type: String,
-      default: 'white'
+      default(){
+        return null
+      }
     }
   },
   computed: {
     backgroundColorStyle(){
+      if(this.backgroundColor == null){
+        return {}
+      }
       return {backgroundColor: this.backgroundColor}
     }
   }

@@ -20,7 +20,9 @@ export default {
   props:{
     activatedColor: {
       type: String,
-      default : 'red'
+      default(){
+        return 'red'
+      }
     },
     path: {
       type: String,

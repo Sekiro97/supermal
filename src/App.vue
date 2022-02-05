@@ -7,7 +7,7 @@
 
 <script>
 
-  import MainTabBar from "components/content/mainTabBar/MainTabBar"
+  import MainTabBar from "components/content/mainTabBar/MainTabBar" //底部导航栏
 
   export default {
     name: 'app',
