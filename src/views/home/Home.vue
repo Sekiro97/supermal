@@ -1,41 +1,40 @@
 <template>
   <div id="home">
-    <nav-bar class="home-navbar">
-      <div slot="center">购物街</div>
-    </nav-bar>
-    <home-swiper :datas="banners"/>
+    <!-- 顶部导航条 -->
+    <home-nav-bar/>
+    <!-- 轮播图 -->
+    <home-swiper :banners="banners"/>
+    <!-- 推荐 -->
+    <home-recommends-show :recommends="recommends"/>
+    <div>aaa</div>
   </div>
 </template>
 
 <script>
-  import NavBar from "components/common/navbar/NavBar"
-  import HomeSwiper from "components/content/home/homeSwiper/HomeSwiper"//轮播图
+  import HomeNavBar from "components/content/home/HomeNavBar"
+  import HomeSwiper from "components/content/home/HomeSwiper"//轮播图
+  import HomeRecommendsShow from "components/content/home/HomeRecommendsShow";
+
   import {getHomeMultidata} from "network/home"
   export default {
     name: "Home",
     components:{
-      NavBar,
-      HomeSwiper
+      HomeNavBar,
+      HomeSwiper,
+      HomeRecommendsShow
     },
     data(){
       return{
         banners: [],
-        recommend: []
+        recommends: []
       }
     },
     created() {
       getHomeMultidata().then(res => {
         this.banners = res.data.banner.list
-        this.banner = res.data.recommend.list
+        this.recommends = res.data.recommend.list
       })
     }
   }
 </script>
 
-<style scoped>
-.home-navbar{
-  color: white;
-  background-color: var(--color-tint);
-}
-
-</style>

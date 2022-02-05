@@ -2,7 +2,7 @@
   <div>
     <!-- 轮播图组件 -->
     <swiper>
-      <swiper-item v-for="item in datas">
+      <swiper-item v-for="item in banners">
         <a :href="item.link">
           <img :src="item.image" />
         </a>
@@ -16,7 +16,7 @@ import {Swiper, SwiperItem} from "components/common/swiper"
 export default {
   name: "HomeSwiper",
   props:{
-    datas:{
+    banners:{
       type:Array,
       default(){
         return []
