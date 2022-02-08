@@ -109,9 +109,9 @@
       //请求轮播图和推荐相关的数据
       this.getHomeMultidata()
       //获取商品数据
-      this.getHomeGoods('pop')
-      this.getHomeGoods('new')
-      this.getHomeGoods('sell')
+      this.getHomeGoods('pop') //流行
+      this.getHomeGoods('new') //最新
+      this.getHomeGoods('sell') //精品
     },
     methods:{
       getHomeMultidata(){
@@ -124,7 +124,8 @@
       getHomeGoods(type){
         const page = this.goods[type].page + 1
         getHomeGoods(type,page).then(res => {
-          console.log(res);
+          this.goods[type].list.push(...res.data.list) //全部加入到list数组中
+          this.goods[type].page += 1
         })
       }
     }
