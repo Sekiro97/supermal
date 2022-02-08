@@ -2,7 +2,7 @@
   <div class="recommends">
     <div v-for="item in recommends" class="recommends-item">
       <a :href="item.link">
-        <img :src="item.image" width="80">
+        <img :src="item.image" width="65" height="65">
         <div>{{item.title}}</div>
       </a>
     </div>
@@ -29,6 +29,8 @@ export default {
   width: 100%;
   overflow: scroll;
   margin: 15px 0px 20px 0px;
+  box-shadow: 0px 20px 0px rgba(200,200,200,.2);
+  padding-bottom: 5px;
 }
 .recommends-item{
   flex: 1;

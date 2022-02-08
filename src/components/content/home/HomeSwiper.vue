@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home-swiper">
     <!-- 轮播图组件 -->
     <swiper>
       <swiper-item v-for="item in banners">
