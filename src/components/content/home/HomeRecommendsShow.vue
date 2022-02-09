@@ -39,5 +39,6 @@ export default {
 }
 .recommends-item div{
   margin-top: 5px;
+  font-size: 13px;
 }
 </style>

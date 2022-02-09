@@ -10,66 +10,8 @@
     <home-feature-view/>
     <tab-control class="tab-control" :titles="['标题1','标题2','标题3']"/>
 
-    <ul>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li><li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li><li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li><li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li><li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li><li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-      <li>aaa</li>
-    </ul>
+    <!-- 展示商品信息 -->
+    <goods-list :goods="goods['pop'].list"/>
   </div>
 </template>
 
@@ -78,7 +20,8 @@
   import HomeSwiper from "components/content/home/HomeSwiper" //轮播图
   import HomeRecommendsShow from "components/content/home/HomeRecommendsShow" //推荐
   import HomeFeatureView from "components/content/home/HomeFeatureView" //特性
-  import TabControl from "components/content/tabControl/TabControl";
+  import TabControl from "components/content/tabControl/TabControl"
+  import GoodsList from "components/content/goodsList/GoodsList" //商品列表
 
   import {
     getHomeMultidata,
@@ -92,7 +35,8 @@
       HomeSwiper,
       HomeRecommendsShow,
       HomeFeatureView,
-      TabControl
+      TabControl,
+      GoodsList
     },
     data(){
       return{
@@ -110,8 +54,8 @@
       this.getHomeMultidata()
       //获取商品数据
       this.getHomeGoods('pop') //流行
-      this.getHomeGoods('new') //最新
-      this.getHomeGoods('sell') //精品
+      // this.getHomeGoods('new') //最新
+      // this.getHomeGoods('sell') //精品
     },
     methods:{
       getHomeMultidata(){
@@ -124,7 +68,8 @@
       getHomeGoods(type){
         const page = this.goods[type].page + 1
         getHomeGoods(type,page).then(res => {
-          this.goods[type].list.push(...res.data.list) //全部加入到list数组中
+          console.log(res);
+          this.goods[type].list.push(...res.data.list) //全部加入到list数组中（在原有数组上新加元素）
           this.goods[type].page += 1
         })
       }
@@ -141,11 +86,12 @@
   left: 0px;
   right: 0px;
   top: 0px;
-  z-index: 1;
+  z-index: 2;
 }
 .tab-control{
   position: sticky;
   top: 44px;
+  z-index: 2;
 }
 </style>
 
