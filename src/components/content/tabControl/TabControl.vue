@@ -36,6 +36,8 @@ export default {
   methods: {
     itemClick(index){
       this.currentIndex = index
+      //向外发送点击时间，并传递index
+      this.$emit('tabClick',index)
     }
   }
 }

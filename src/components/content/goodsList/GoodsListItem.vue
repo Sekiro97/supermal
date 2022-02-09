@@ -30,7 +30,8 @@ export default {
 
 <style scoped>
 .goods-list-item {
-  padding-bottom: 45px;
+  padding-bottom: 50px;
+  position: relative;
   width: 48%;
 }
 .goods-list-item img{
@@ -40,8 +41,15 @@ export default {
 }
 .good-info{
   font-size: 13px;
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
   text-align: center;
+  width: 100%;
 }
+
 .good-info p {
   overflow: hidden; /*文字超出范围后不显示*/
   text-overflow: ellipsis; /*规定文字超出范围后以何种字符显示未被显示出来的文字*/
@@ -55,6 +63,8 @@ export default {
 .good-info .collect {
   position: relative; /*绝对定位的元素以最近的定位祖先元素为参照物 static 元素会忽略任何 top、bottom、left 或 right 声明*/
 }
+
+/*在收藏span标签下的内容前插入伪元素*/
 .good-info .collect::before {
   content: '';
   position: absolute;

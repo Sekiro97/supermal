@@ -8,10 +8,9 @@
     <home-recommends-show :recommends="recommends"/>
     <!-- 本周流行 -->
     <home-feature-view/>
-    <tab-control class="tab-control" :titles="['标题1','标题2','标题3']"/>
-
+    <tab-control class="tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
     <!-- 展示商品信息 -->
-    <goods-list :goods="goods['pop'].list"/>
+    <goods-list :goods="showGoods"/>
   </div>
 </template>
 
@@ -46,7 +45,8 @@
           'pop':{page: 0, list:[]},
           'new':{page: 0, list:[]},
           'sell':{page: 0, list:[]}
-        }
+        },
+        currentType: 'pop'
       }
     },
     created() {
@@ -54,10 +54,28 @@
       this.getHomeMultidata()
       //获取商品数据
       this.getHomeGoods('pop') //流行
-      // this.getHomeGoods('new') //最新
-      // this.getHomeGoods('sell') //精品
+      this.getHomeGoods('new') //最新
+      this.getHomeGoods('sell') //精品
+    },
+    computed:{
+      showGoods(){
+        return this.goods[this.currentType].list
+      }
     },
     methods:{
+      tabClick(index){
+        switch (index){
+          case 0: //潮流
+            this.currentType = 'pop'
+            break;
+          case 1: //最新
+            this.currentType = 'new'
+            break;
+          case 2: //精品
+            this.currentType = 'sell'
+            break;
+        }
+      },
       getHomeMultidata(){
         getHomeMultidata().then(res => {
           //console.log(res);
