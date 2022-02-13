@@ -3,14 +3,14 @@
     <!-- 顶部导航条 -->
     <home-nav-bar class="home-nav-bar"/>
     <!-- 轮播图 -->
-    <home-swiper :banners="banners"/>
+    <home-swiper class="home-swiper" :banners="banners"/>
     <!-- 推荐 -->
     <home-recommends-show :recommends="recommends"/>
     <!-- 本周流行 -->
     <home-feature-view/>
-    <tab-control class="tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
+    <tab-control class="home-tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
     <!-- 展示商品信息 -->
-    <goods-list :goods="showGoods"/>
+    <goods-list class="home-goodslist" :goods="showGoods"/>
   </div>
 </template>
 
@@ -104,12 +104,12 @@
   left: 0px;
   right: 0px;
   top: 0px;
-  z-index: 2;
+  z-index: 10;
 }
-.tab-control{
+.home-tab-control{
   position: sticky;
   top: 44px;
-  z-index: 2;
+  z-index: 1;
 }
 </style>
 

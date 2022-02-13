@@ -1,5 +1,4 @@
 <template>
-  <div>
     <tab-bar>
       <tab-bar-item path="/home" title="首页">
         <img slot="tabbar-item-img-normal" src="~assets/img/tabbar/home.svg" width="24" height="24">
@@ -18,7 +17,6 @@
         <img slot="tabbar-item-img-activated" src="~assets/img/tabbar/profile_active.svg" width="24" height="24">
       </tab-bar-item>
     </tab-bar>
-  </div>
 </template>
 
 <script>

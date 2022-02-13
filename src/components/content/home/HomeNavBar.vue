@@ -1,7 +1,7 @@
 <template>
   <div class="home-navbar">
     <nav-bar class="home-navbar">
-      <div slot="center">购物街</div>
+      <div slot="center">商业街</div>
     </nav-bar>
   </div>
 </template>
