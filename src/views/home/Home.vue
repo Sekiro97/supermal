@@ -2,15 +2,174 @@
   <div id="home">
     <!-- 顶部导航条 -->
     <home-nav-bar class="home-nav-bar"/>
-    <!-- 轮播图 -->
-    <home-swiper class="home-swiper" :banners="banners"/>
-    <!-- 推荐 -->
-    <home-recommends-show :recommends="recommends"/>
-    <!-- 本周流行 -->
-    <home-feature-view/>
-    <tab-control class="home-tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
-    <!-- 展示商品信息 -->
-    <goods-list class="home-goodslist" :goods="showGoods"/>
+
+    <scroll class="content">
+      <!-- 轮播图 -->
+      <home-swiper class="home-swiper" :banners="banners"/>
+      <!-- 推荐 -->
+      <home-recommends-show :recommends="recommends"/>
+      <!-- 本周流行 -->
+      <home-feature-view/>
+      <tab-control class="home-tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
+      <!-- 展示商品信息 -->
+      <goods-list class="home-goodslist" :goods="showGoods"/>
+    </scroll>
+
+<!--    <ul>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li><li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li><li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li><li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li><li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li><li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li><li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li><li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--      <li>ddddd</li>-->
+<!--    </ul>-->
   </div>
 </template>
 
@@ -21,6 +180,7 @@
   import HomeFeatureView from "components/content/home/HomeFeatureView" //特性
   import TabControl from "components/content/tabControl/TabControl"
   import GoodsList from "components/content/goodsList/GoodsList" //商品列表
+  import Scroll from "components/common/scroll/Scroll" //滚动组件
 
   import {
     getHomeMultidata,
@@ -35,7 +195,8 @@
       HomeRecommendsShow,
       HomeFeatureView,
       TabControl,
-      GoodsList
+      GoodsList,
+      Scroll
     },
     data(){
       return{
@@ -86,7 +247,7 @@
       getHomeGoods(type){
         const page = this.goods[type].page + 1
         getHomeGoods(type,page).then(res => {
-          console.log(res);
+          console.log(res)
           this.goods[type].list.push(...res.data.list) //全部加入到list数组中（在原有数组上新加元素）
           this.goods[type].page += 1
         })
@@ -98,6 +259,8 @@
 <style scoped>
 #home{
   padding-top: 44px;
+  height: 100vh;
+  position: relative;
 }
 .home-nav-bar{
   position: fixed;
@@ -111,5 +274,17 @@
   top: 44px;
   z-index: 1;
 }
+.content{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 44px;
+  bottom: 49px;
+}
+/*.content{*/
+/*  height: calc(100% - 93px);*/
+/*  margin-top: 44px;*/
+/*  overflow: hidden;*/
+/*}*/
 </style>
 
