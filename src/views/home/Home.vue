@@ -174,10 +174,10 @@
 </template>
 
 <script>
-  import HomeNavBar from "components/content/home/HomeNavBar"
-  import HomeSwiper from "components/content/home/HomeSwiper" //轮播图
-  import HomeRecommendsShow from "components/content/home/HomeRecommendsShow" //推荐
-  import HomeFeatureView from "components/content/home/HomeFeatureView" //特性
+  import HomeNavBar from "views/home/childComponents/HomeNavBar"
+  import HomeSwiper from "views/home/childComponents/HomeSwiper" //轮播图
+  import HomeRecommendsShow from "views/home/childComponents/HomeRecommendsShow" //推荐
+  import HomeFeatureView from "views/home/childComponents/HomeFeatureView" //特性
   import TabControl from "components/content/tabControl/TabControl"
   import GoodsList from "components/content/goodsList/GoodsList" //商品列表
   import Scroll from "components/common/scroll/Scroll" //滚动组件
