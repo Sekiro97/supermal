@@ -19,10 +19,4 @@
 
 <style scoped>
   @import "assets/css/base.css";
-  .app-router-view{
-    z-index: 1;
-  }
-  .app-main-tabbar{
-    z-index: 2;
-  }
 </style>
