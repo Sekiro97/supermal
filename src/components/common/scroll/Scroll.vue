@@ -16,9 +16,19 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$refs.wrapper)
     this.scroll = new BScroll(this.$refs.wrapper,{
-      probeType: 3
+      probeType: 3,
+      click: true,
+      disableMouse: false,
+      disableTouch: false,
+      preventDefault: false
     })
+  },
+  methods:{
+    scrollTo(x,y,time = 500){
+      this.scroll.scrollTo(x,y,time)
+    }
   }
 }
 </script>

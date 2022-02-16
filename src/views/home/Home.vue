@@ -2,174 +2,22 @@
   <div id="home">
     <!-- 顶部导航条 -->
     <home-nav-bar class="home-nav-bar"/>
-
-    <scroll class="content">
+    <!-- 滚动组件 -->
+    <scroll class="home-content" ref="scroll">
       <!-- 轮播图 -->
       <home-swiper class="home-swiper" :banners="banners"/>
       <!-- 推荐 -->
       <home-recommends-show :recommends="recommends"/>
       <!-- 本周流行 -->
       <home-feature-view/>
+      <!-- tabcontrol -->
       <tab-control class="home-tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
       <!-- 展示商品信息 -->
       <goods-list class="home-goodslist" :goods="showGoods"/>
     </scroll>
 
-<!--    <ul>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li><li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li><li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li><li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li><li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li><li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li><li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li><li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--      <li>ddddd</li>-->
-<!--    </ul>-->
+    <!-- 在组件中监听点击事件不能使用@click 要使用@click.native -->
+    <back-top class="home-back-top" @click.native="backTopClick"/>
   </div>
 </template>
 
@@ -181,7 +29,7 @@
   import TabControl from "components/content/tabControl/TabControl"
   import GoodsList from "components/content/goodsList/GoodsList" //商品列表
   import Scroll from "components/common/scroll/Scroll" //滚动组件
-
+  import BackTop from "components/content/backTop/BackTop"
   import {
     getHomeMultidata,
     getHomeGoods
@@ -196,7 +44,8 @@
       HomeFeatureView,
       TabControl,
       GoodsList,
-      Scroll
+      Scroll,
+      BackTop
     },
     data(){
       return{
@@ -214,9 +63,9 @@
       //请求轮播图和推荐相关的数据
       this.getHomeMultidata()
       //获取商品数据
-      this.getHomeGoods('pop') //流行
-      this.getHomeGoods('new') //最新
-      this.getHomeGoods('sell') //精品
+      this.getHomeGoods('pop') //流行商品数据
+      this.getHomeGoods('new') //最新商品数据
+      this.getHomeGoods('sell') //精品商品数据
     },
     computed:{
       showGoods(){
@@ -239,7 +88,6 @@
       },
       getHomeMultidata(){
         getHomeMultidata().then(res => {
-          //console.log(res);
           this.banners = res.data.banner.list
           this.recommends = res.data.recommend.list
         })
@@ -251,6 +99,9 @@
           this.goods[type].list.push(...res.data.list) //全部加入到list数组中（在原有数组上新加元素）
           this.goods[type].page += 1
         })
+      },
+      backTopClick(){
+        this.$refs.scroll.scrollTo(0,0,500)
       }
     }
   }
@@ -259,32 +110,35 @@
 <style scoped>
 #home{
   padding-top: 44px;
-  height: 100vh;
+  height: calc(100vh - 49px);
   position: relative;
+  overflow: hidden;
 }
 .home-nav-bar{
   position: fixed;
   left: 0px;
   right: 0px;
   top: 0px;
-  z-index: 10;
+  z-index: 5;
 }
 .home-tab-control{
   position: sticky;
-  top: 44px;
+  top: 0px;
   z-index: 1;
 }
-.content{
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 44px;
-  bottom: 49px;
-}
-/*.content{*/
-/*  height: calc(100% - 93px);*/
-/*  margin-top: 44px;*/
+/*.home-content{*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  top: 44px;*/
+/*  bottom: 49px;*/
 /*  overflow: hidden;*/
 /*}*/
+.home-content{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 </style>
 

@@ -1,9 +1,7 @@
 <template>
-  <div class="home-navbar">
-    <nav-bar class="home-navbar">
-      <div slot="center">商业街</div>
-    </nav-bar>
-  </div>
+  <nav-bar class="navbar">
+    <div slot="center">商业街</div>
+  </nav-bar>
 </template>
 
 <script>
@@ -17,7 +15,7 @@ export default {
 </script>
 
 <style scoped>
-.home-navbar{
+.navbar{
   color: white;
   background-color: var(--color-tint);
 }
