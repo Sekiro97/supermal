@@ -3,7 +3,7 @@
     <!-- 顶部导航条 -->
     <home-nav-bar class="home-nav-bar"/>
     <!-- 滚动组件 -->
-    <scroll class="home-content" ref="scroll">
+    <scroll class="home-content" ref="scroll" :probe-type="3" @onScroll="onScroll">
       <!-- 轮播图 -->
       <home-swiper class="home-swiper" :banners="banners"/>
       <!-- 推荐 -->
@@ -17,7 +17,9 @@
     </scroll>
 
     <!-- 在组件中监听点击事件不能使用@click 要使用@click.native -->
-    <back-top class="home-back-top" @click.native="backTopClick"/>
+    <transition name="back-top-animation">
+      <back-top class="home-back-top" @click.native="backTopClick" v-show="backTopShow"/>
+    </transition>
   </div>
 </template>
 
@@ -56,7 +58,8 @@
           'new':{page: 0, list:[]},
           'sell':{page: 0, list:[]}
         },
-        currentType: 'pop'
+        currentType: 'pop',
+        backTopShow: false
       }
     },
     created() {
@@ -102,6 +105,15 @@
       },
       backTopClick(){
         this.$refs.scroll.scrollTo(0,0,500)
+      },
+      onScroll(position){
+        let position_y = Math.abs(position.y)
+        if(position_y > 1000){
+          this.backTopShow = true
+        }
+        else{
+          this.backTopShow = false
+        }
       }
     }
   }
@@ -110,9 +122,8 @@
 <style scoped>
 #home{
   padding-top: 44px;
-  height: calc(100vh - 49px);
+  height: 100vh;
   position: relative;
-  overflow: hidden;
 }
 .home-nav-bar{
   position: fixed;
@@ -126,19 +137,25 @@
   top: 0px;
   z-index: 1;
 }
-/*.home-content{*/
-/*  position: absolute;*/
-/*  left: 0;*/
-/*  right: 0;*/
-/*  top: 44px;*/
-/*  bottom: 49px;*/
-/*  overflow: hidden;*/
-/*}*/
 .home-content{
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 44px;
+  bottom: 49px;
   overflow: hidden;
 }
-
+.back-top-animation-enter{
+  opacity: 0;
+}
+.back-top-animation-enter-active{
+  transition: opacity 0.5s;
+}
+.back-top-animation-leave-to{
+  opacity: 0;
+}
+.back-top-animation-leave-active{
+  transition: opacity 0.5s;
+}
 </style>
 

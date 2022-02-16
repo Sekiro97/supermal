@@ -15,14 +15,22 @@ export default {
       scroll: null
     }
   },
+  props:{
+    probeType:{
+      type:Number,
+      default(){
+        return 0
+      }
+    }
+  },
   mounted() {
-    console.log(this.$refs.wrapper)
     this.scroll = new BScroll(this.$refs.wrapper,{
-      probeType: 3,
-      click: true,
-      disableMouse: false,
-      disableTouch: false,
-      preventDefault: false
+      probeType: this.probeType,
+      click: true
+    })
+
+    this.scroll.on('scroll', (position) => {
+      this.$emit('onScroll',position)
     })
   },
   methods:{
