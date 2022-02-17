@@ -3,7 +3,12 @@
     <!-- 顶部导航条 -->
     <home-nav-bar class="home-nav-bar"/>
     <!-- 滚动组件 -->
-    <scroll class="home-content" ref="scroll" :probe-type="3" @onScroll="onScroll">
+    <scroll class="home-content" ref="scroll"
+            :probe-type="3"
+            :pull-up-load="true"
+            @onScroll="onScroll"
+            @onPullingUp="loadMoreData">
+
       <!-- 轮播图 -->
       <home-swiper class="home-swiper" :banners="banners"/>
       <!-- 推荐 -->
@@ -97,10 +102,11 @@
       },
       getHomeGoods(type){
         const page = this.goods[type].page + 1
+        console.log(page);
         getHomeGoods(type,page).then(res => {
-          console.log(res)
           this.goods[type].list.push(...res.data.list) //全部加入到list数组中（在原有数组上新加元素）
           this.goods[type].page += 1
+          this.$refs.scroll.finishPullUp()
         })
       },
       backTopClick(){
@@ -114,6 +120,10 @@
         else{
           this.backTopShow = false
         }
+      },
+      loadMoreData(){
+        //上拉加载更多数据
+        this.getHomeGoods(this.currentType)
       }
     }
   }
