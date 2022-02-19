@@ -1,6 +1,7 @@
 <template>
   <div class="goods-list-item">
-    <img :src="good.show.img"/>
+    <!-- @load 监听图片加载完成 -->
+    <img :src="good.show.img" @load="imageLoad"/>
     <div class="good-info">
       <p>{{good.title}}</p>
       <span class="price">{{finalPrice}}</span>
@@ -23,6 +24,12 @@ export default {
   computed:{
     finalPrice(){
       return '￥' + this.good.price
+    }
+  },
+  methods:{
+    imageLoad(){
+      //使用 事件总线 发射事件
+      this.$bus.$emit('itemImageLoad')
     }
   }
 }

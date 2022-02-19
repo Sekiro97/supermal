@@ -75,12 +75,29 @@
       this.getHomeGoods('new') //最新商品数据
       this.getHomeGoods('sell') //精品商品数据
     },
+    mounted() {
+      //使用 事件总线 监听事件
+      const refresh = this.debounce(this.$refs.scroll.refresh,50) //生成一个新的函数
+      this.$bus.$on('itemImageLoad',() => {
+        refresh()
+      })
+    },
     computed:{
       showGoods(){
         return this.goods[this.currentType].list
       }
     },
     methods:{
+      //防抖动函数（防止 this.$refs.scroll.refresh() 连续调用多次降低性能）
+      debounce(fun,delay){
+        let timer = null
+        return function(...args){
+          if(timer) clearTimeout(timer)
+          timer = setTimeout(() => {
+            fun.apply(this,args)
+          },delay)
+        }
+      },
       tabClick(index){
         switch (index){
           case 0: //潮流

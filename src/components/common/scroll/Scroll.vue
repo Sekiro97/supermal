@@ -49,8 +49,9 @@ export default {
     scrollTo(x,y,time = 500){
       this.scroll.scrollTo(x,y,time)
     },
-    refreshScroll(){
-      this.scroll.refreshScroll()
+    refresh(){
+      console.log('刷新scroll组件');
+      this.scroll.refresh()
     },
     finishPullUp(){
       this.scroll.finishPullUp()

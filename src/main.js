@@ -8,6 +8,9 @@ import 'swiper/css/swiper.min.css' //轮播图组件所用css
 
 Vue.use(VueAwesomeSwiper) //轮播图组件
 
+//使用事件总线
+Vue.prototype.$bus = new Vue()
+
 Vue.config.productionTip = false
 new Vue({
   router,
