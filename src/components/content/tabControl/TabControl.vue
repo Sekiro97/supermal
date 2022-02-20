@@ -38,6 +38,9 @@ export default {
       this.currentIndex = index
       //向外发送点击时间，并传递index
       this.$emit('tabClick',index)
+    },
+    setCurrentIndex(index){
+      this.currentIndex = index
     }
   }
 }
@@ -46,7 +49,6 @@ export default {
 <style scoped>
 .tab-control{
   display: flex;
-  margin-top: 10px;
 }
 .tab-control-item{
   flex: 1;

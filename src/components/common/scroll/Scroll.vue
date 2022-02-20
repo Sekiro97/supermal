@@ -41,6 +41,7 @@ export default {
       this.$emit('onScroll',position)
     })
 
+    //监听滚动到底部
     this.scroll.on('pullingUp', () =>{
       this.$emit('onPullingUp')
     })
@@ -54,7 +55,9 @@ export default {
       this.scroll.refresh()
     },
     finishPullUp(){
-      this.scroll.finishPullUp()
+      if(this.scroll) {
+        this.scroll.finishPullUp()
+      }
     }
   }
 }

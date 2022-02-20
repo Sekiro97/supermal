@@ -2,6 +2,8 @@
   <div id="home">
     <!-- 顶部导航条 -->
     <home-nav-bar class="home-nav-bar"/>
+    <tab-control v-show="isTabControlFixed" ref="tabControl" class="tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
+
     <!-- 滚动组件 -->
     <scroll class="home-content" ref="scroll"
             :probe-type="3"
@@ -10,13 +12,13 @@
             @onPullingUp="loadMoreData">
 
       <!-- 轮播图 -->
-      <home-swiper class="home-swiper" :banners="banners"/>
+      <home-swiper class="home-swiper" :banners="banners" @imageLoaded="imageLoaded"/>
       <!-- 推荐 -->
-      <home-recommends-show :recommends="recommends"/>
+      <home-recommends-show :recommends="recommends" @imageLoaded="imageLoaded"/>
       <!-- 本周流行 -->
       <home-feature-view/>
       <!-- tabcontrol -->
-      <tab-control class="home-tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
+      <tab-control style="margin-top: 20px" ref="scrollTabControl" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
       <!-- 展示商品信息 -->
       <goods-list class="home-goodslist" :goods="showGoods"/>
     </scroll>
@@ -37,10 +39,17 @@
   import GoodsList from "components/content/goodsList/GoodsList" //商品列表
   import Scroll from "components/common/scroll/Scroll" //滚动组件
   import BackTop from "components/content/backTop/BackTop"
+
+  //网络请求
   import {
     getHomeMultidata,
     getHomeGoods
   } from "network/home"
+
+  //工具
+  import {
+    debounce //防抖函数
+  } from "common/utils"
 
   export default {
     name: "Home",
@@ -64,7 +73,9 @@
           'sell':{page: 0, list:[]}
         },
         currentType: 'pop',
-        backTopShow: false
+        backTopShow: false,
+        tabControlOffsetTop: 0, //tabControl 的 OffsetTop 属性
+        isTabControlFixed: false
       }
     },
     created() {
@@ -76,8 +87,9 @@
       this.getHomeGoods('sell') //精品商品数据
     },
     mounted() {
+      //图片加载完成的事件监听
       //使用 事件总线 监听事件
-      const refresh = this.debounce(this.$refs.scroll.refresh,50) //生成一个新的函数
+      const refresh = debounce(this.$refs.scroll.refresh,50) //生成一个新的函数
       this.$bus.$on('itemImageLoad',() => {
         refresh()
       })
@@ -88,15 +100,10 @@
       }
     },
     methods:{
-      //防抖动函数（防止 this.$refs.scroll.refresh() 连续调用多次降低性能）
-      debounce(fun,delay){
-        let timer = null
-        return function(...args){
-          if(timer) clearTimeout(timer)
-          timer = setTimeout(() => {
-            fun.apply(this,args)
-          },delay)
-        }
+      imageLoaded(){
+        //轮播图、推荐中的图片加载完毕，计算scroll中tabControl组件的offsetTop属性 （距离顶部的距离）
+         console.log(this.$refs.scrollTabControl.$el.offsetTop);
+        this.tabControlOffsetTop = this.$refs.scrollTabControl.$el.offsetTop
       },
       tabClick(index){
         switch (index){
@@ -110,6 +117,10 @@
             this.currentType = 'sell'
             break;
         }
+
+        //同步滚动区域的tabControl以及顶部tabControl的选中状态
+        this.$refs.tabControl.setCurrentIndex(index)
+        this.$refs.scrollTabControl.setCurrentIndex(index)
       },
       getHomeMultidata(){
         getHomeMultidata().then(res => {
@@ -119,7 +130,6 @@
       },
       getHomeGoods(type){
         const page = this.goods[type].page + 1
-        console.log(page);
         getHomeGoods(type,page).then(res => {
           this.goods[type].list.push(...res.data.list) //全部加入到list数组中（在原有数组上新加元素）
           this.goods[type].page += 1
@@ -130,12 +140,18 @@
         this.$refs.scroll.scrollTo(0,0,500)
       },
       onScroll(position){
+        console.log(position);
         let position_y = Math.abs(position.y)
-        if(position_y > 1000){
-          this.backTopShow = true
+
+        //判断backtop是否显示
+        this.backTopShow = position_y > 1000
+
+        //决定tabControl是否吸顶（position：fixed）
+        if(position_y >= this.tabControlOffsetTop){
+          this.isTabControlFixed = true
         }
         else{
-          this.backTopShow = false
+          this.isTabControlFixed = false
         }
       },
       loadMoreData(){
@@ -148,21 +164,19 @@
 
 <style scoped>
 #home{
-  padding-top: 44px;
   height: 100vh;
   position: relative;
 }
 .home-nav-bar{
-  position: fixed;
-  left: 0px;
-  right: 0px;
-  top: 0px;
   z-index: 5;
 }
 .home-tab-control{
-  position: sticky;
-  top: 0px;
   z-index: 1;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0px;
+  margin: 0px;
 }
 .home-content{
   position: absolute;
@@ -171,6 +185,11 @@
   top: 44px;
   bottom: 49px;
   overflow: hidden;
+  z-index: 1;
+}
+.tab-control{
+  position: relative;
+  z-index: 5;
 }
 .back-top-animation-enter{
   opacity: 0;

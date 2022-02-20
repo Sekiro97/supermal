@@ -12,7 +12,7 @@
     <swiper :options="swiperOptions" ref="mySwiper">
       <swiper-slide v-for="item in banners">
         <a :href="item.link">
-          <img :src="item.image" width="100%"/>
+          <img :src="item.image" width="100%" @load="finishLoad"/>
         </a>
       </swiper-slide>
 
@@ -58,6 +58,11 @@ export default {
         },
         effect: 'slide'
       }
+    }
+  },
+  methods:{
+    finishLoad(){
+      this.$emit('imageLoaded')
     }
   }
 }
