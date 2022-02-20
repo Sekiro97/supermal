@@ -2,6 +2,8 @@
   <div id="home">
     <!-- 顶部导航条 -->
     <home-nav-bar class="home-nav-bar"/>
+
+    <!-- 该tab-control用于吸附在顶部的效果 -->
     <tab-control v-show="isTabControlFixed" ref="tabControl" class="tab-control" :titles="['流行','最新','精品']" @tabClick="tabClick"/>
 
     <!-- 滚动组件 -->
